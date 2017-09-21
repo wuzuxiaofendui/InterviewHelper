@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app.apps.AppConfig',
+    'app01.apps.AppConfig',
 ]
 
 MIDDLEWARE = [
@@ -120,7 +120,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR,"app/static")
+STATIC_ROOT = os.path.join(BASE_DIR, "app01/static")
 MEDIA_URL="/media/"
-AUTH_USER_MODEL="app.UserInfo"
-MEDIA_ROOT=os.path.join(BASE_DIR,"app","media").replace('\\','/')
+AUTH_USER_MODEL="app01.UserInfo"
+MEDIA_ROOT=os.path.join(BASE_DIR, "app01", "media").replace('\\', '/')
