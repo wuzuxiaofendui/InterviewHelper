@@ -1,87 +1,284 @@
-{% extends "base.html" %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <script src="{% static "js/jquery-3.2.1.js" %}"></script>
+    <style>
+        .clearfix:after,.clearfix:before{
+            content: "";
+            display:block;
+        }
+        .clearfix:after{
+            clear:both;
+        }
+        .clearfix{
+            zoom:1;
+        }
+
+        .fl{
+            float: left;
+        }
+
+        .fr{
+            float: right;
+        }
+
+        body, ul, h1, p{
+            margin:0;
+            padding:0;
+            font-size: 13px;
+        }
+
+        body{
+{#            background-color: #aaa;#}
+        }
+
+        a{
+            text-underline: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        a:hover{
+            color:blue;
+        }
+
+        li{
+            list-style: none;
+        }
+
+        .title{
+            background-color: #000;
+            padding:8px 5px;
+        }
+
+        .leftTitle li, .leftTitle span{
+            float: left;
+        }
+
+        .leftTitle span{
+            color: #9d9d9d;
+        }
+
+        .leftTitle a{
+            color:#9d9d9d;
+            font-size: 13px;
+            margin: 0 10px;
+        }
+
+        .leftTitle a:hover{
+            color:#fff;
+        }
+
+        .contentBody{
+            background-color: white;
+            margin: 5px;
+
+        }
+
+        .selfManage{
+            margin-top: 7px;
+            margin-right: 15px;
+        }
+
+        .selfManage li, .selfManage span{
+            float: right;
+            margin: 10px 5px;
+        }
+
+        .webICON h1{
+            font-size: 40px;
+            font-weight: 700;
+            margin: 20px;
+        }
+
+        .blogManage, .tag{
+            width: 300px;
+            margin-top: 23px;
+
+            position: absolute;
+            top: 0;
+        }
+
+        .blogManage{
+            left: 0;
+            border-right:1px solid grey;
+        }
+
+        .tag{
+            right: 0;
+            border-left:1px solid grey;
+        }
+
+        .blogManage>div, .tag>div{
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 3px;
+            line-height: 30px;
+            font-size: 17px;
+{#            height:30px;#}
+        }
+
+        .option{
+            margin-bottom: 15px;
+        }
+
+        .option li{
+            padding-left:8px;
+        }
+
+        .option a{
+            color: black;
+        }
+
+        .option a:hover{
+            color: #777;
+        }
+
+        .manageButton li{
+            float: left;
+            margin-right: 5px;
+        }
+
+        .manageButton li a{
+            float: left;
+            background-color: #555;
+            padding:0 9px;
+            line-height: 24px;
+            color: #efefef;
+        }
+
+        .articleManage{
+            margin-left: 300px;
+            border-left: 1px solid grey;
+            margin-right: 300px;
+            background-color: #eee;
+{#            overflow: hidden;#}
+        }
+
+        .articleManageTitle{
+            height: 23px;
+{#            background-color: red;;#}
+            background-color: white;
+        }
+
+        .active{
+            background-color: #444!important;
+        }
+
+        .bar{
+            background-color: #444;
+            height: 36px;
+        }
+
+        body .first_title, body .last_title{
+            margin:5px;
+        }
+        body .last_title{
+            text-indent: 80px;
+        }
+
+        .manageArea{
+            position: relative;
+        }
 
 
+    </style>
+    {% block head %}{% endblock %}
+</head>
+<body>
+<div class="title clearfix">
+    <div class="leftTitle">
+        <ul class="webManage fl">
+            <li><a href="/">网站首页</a></li>
+            <li><a href="#">面试宝典</a></li>
+            <li><a href="#">题库</a></li>
+            <li><a href="#">心得</a></li>
+            <li><a href="#">动态</a></li>
+            <li><a href="#">收藏</a></li>
+            <li><a href="#">搜索</a></li>
+        </ul>
 
-{% block content %}
+        <ul class="personalManage fr">
+            <li><a href="#">{{ userObj.nickname }}洒洒水啦</a></li>
+            <span>·</span>
+            <li><a href="#">短消息</a></li>
+            <span>·</span>
+            <li><a href="#">设置</a></li>
+            <span>·</span>
+            <li><a href="/logout/">退出</a></li>
+        </ul>
+    </div>
+</div>
 
-        <div class="col-md-2">
+<div class="contentBody clearfix">
+    <div class="selfManage clearfix">
+        <div class="webICON fl">
+            <h1 class="first_title">小花の</h1>
+            <h1 class="last_title">面试系统</h1>
+        </div>
+        <ul class="fr">
+            <li><a href="#">修改密码</a></li>
+            <span>|</span>
+            <li><a href="#">备份</a></li>
+            <span>|</span>
+            <li><a href="#">模板</a></li>
+        </ul>
+    </div>
 
+    <div class="manageArea clearfix">
+        <div class="blogManage fl">
+            <div class="selfOption">最新面试心得</div>
+            <ul class="option">
+                <li><a href="#">呵呵呵，我能有什么面试心得啊。。。。</a></li>
+                <li><a href="#">就是，心得你妹啊。。。</a></li>
+                <li><a href="#">这他妈就很尴尬了啊。。。。</a></li>
+            </ul>
 
         </div>
-        <div class="col-md-7">
-            <div class="article_list">
 
-                  {% for article in article_list %}
-                       <div class="article_item">
-                               <div class="row">
-                                   <div class="title">
-                                       <a href="">{{ article.title }}</a>
-                                   </div>
-                               </div>
-                               <div class="row">
-                                   <div class="img"><a href="/blog/{{ article.blog.user.username }}"><img src="{{ article.blog.user.avatar.url }}" width="60px" height="60px"></a></div>
-                                   <div class="text">{{ article.desc }}</div>
-                               </div>
-                               <div class="row">
-                                   <div class="icon">
-                                       <span><a href="/blog/{{ article.blog.user.username }}">{{ article.blog.user.username }}</a> 发布于</span>
-                                       <span class="timer">{{ article.create_time|date:"Y-m-d" }}</span> &nbsp;&nbsp;
-                                       <span class="glyphicon glyphicon-comment"></span>&nbsp;<a href="">评论{{ article.comment_count }}</a>
-                                       <span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;<a href="">赞{{ article.up_count }}</a>
-                                   </div>
-                               </div>
-                            </div>
-                  {% endfor %}
-
-
-
-
-
-
-
-
-
-
+        <div class="articleManage clearfix">
+            <div class="articleManageTitle">
+                <ul class="manageButton">
+                    <li><a href="#" class="active">最新试题</a></li>
+                    <li><a href="#">经典试题</a></li>
+                    <li><a href="#">算法</a></li>
+                    <li><a href="#">毛线</a></li>
+                    <li><a href="#">收藏</a></li>
+                    <li><a href="#">文件</a></li>
+                    <li><a href="#">设置</a></li>
+                    <li><a href="#">选项</a></li>
+                </ul>
             </div>
 
+            <div class="bar"></div>
 
-
+            <div class="articleManageBody">
+                <div style="background-color: #0f0f0f"></div>
+                {% block body %}{% endblock %}
+            </div>
 
         </div>
 
+        <div class="tag fr clearfix">
+            <div class="selfOption">信息提醒</div>
+            <ul class="option">
+                <li><a href="#">面试1   <span class="timer fr">2017-09-21</span></a></li>
+                <li><a href="#">面试2   <span class="timer fr">2017-09-21</span></a></li>
+                <li><a href="#">面试3   <span class="timer fr">2017-09-21</span></a></li>
+                <li><a href="#">面试4   <span class="timer fr">2017-09-21</span></a></li>
+            </ul>
+        </div>
+    </div>
 
-{% endblock %}
-
-{% block others %}
-            <div class="panel panel-primary">
-                  <div class="panel-heading">Panel heading without title</div>
-                  <div class="panel-body">
-                   <p>111</p>
-                   <p>111</p>
-                   <p>111</p>
-                  </div>
-                </div>
-
-            <div class="panel panel-warning">
-              <div class="panel-heading">
-                <h3 class="panel-title">Panel title</h3>
-              </div>
-              <div class="panel-body">
-                   <p>111</p>
-                   <p>111</p>
-                   <p>111</p>
-              </div>
-            </div>
+</div>
 
 
-             <div class="panel panel-info">
-              <div class="panel-heading">
-                <h3 class="panel-title">Panel title</h3>
-              </div>
-              <div class="panel-body">
-                <p>111</p>
-                   <p>111</p>
-                   <p>111</p>
-              </div>
-            </div>
-{% endblock %}
+
+</body>
+</html>

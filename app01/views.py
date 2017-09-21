@@ -4,5 +4,5 @@ from app01 import models
 # Create your views here.
 
 
-def index(request):
-    return HttpResponse("OK")
+def index(request, *args):
+    return render(request, "index.html")
