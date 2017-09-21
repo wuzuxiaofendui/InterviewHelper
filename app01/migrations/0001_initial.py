@@ -71,7 +71,7 @@ class Migration(migrations.Migration):
             name='UserInfo2Company',
             fields=[
                 ('nid', models.AutoField(primary_key=True, serialize=False)),
-                ('company', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app.Company', verbose_name='公司')),
+                ('company', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app01.Company', verbose_name='公司')),
                 ('userinfo', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='用户')),
             ],
         ),
