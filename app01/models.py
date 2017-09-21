@@ -33,6 +33,9 @@ class Company(models.Model):
 
     addr = models.CharField(max_length=64)
 
+    def __str__(self):
+        return self.name
+
 
 class IViewDetail(models.Model):
     """
@@ -62,11 +65,15 @@ class Comment(models.Model):
     评论表
     """
     nid = models.BigAutoField(primary_key=True)
+
     iviewdetail = models.ForeignKey(verbose_name='评论的面试详情', to='IViewDetail', to_field='nid')
+
     content = models.TextField(verbose_name='评论内容')
+
     create_time = models.DateTimeField(verbose_name='创建时间', auto_now_add=True)
 
     parent_id = models.ForeignKey('self', blank=True, null=True, verbose_name='父级评论')
+
     user = models.ForeignKey(verbose_name='评论者', to='UserInfo', to_field='nid')
 
     def __str__(self):
